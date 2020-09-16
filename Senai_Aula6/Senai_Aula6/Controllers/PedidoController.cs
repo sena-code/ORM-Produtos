@@ -11,6 +11,7 @@ using Senai_Aula6.Repositories;
 
 namespace Senai_Aula6.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class PedidoController : ControllerBase

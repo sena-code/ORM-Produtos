@@ -11,6 +11,7 @@ using Senai_Aula6.Repositories;
 
 namespace Senai_Aula6.Controllers
 {
+   
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoItemController : ControllerBase
@@ -24,23 +25,7 @@ namespace Senai_Aula6.Controllers
 
         // GET: api/<ProdutoItemController>
      [HttpGet]
-        public IActionResult Post(List<ProdutoItem> pedidosItens)
-        {
-            try
-            {
-                //Adiciona um novo pedido com os itens do pedido
-                Pedido pedido = _repo.Adicionar(pedidosItens);
-
-                //Caso ok retorna o pedido
-                return Ok(pedido);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpGet]
+   
         public IActionResult Get()
         {
             try
@@ -57,5 +42,23 @@ namespace Senai_Aula6.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost]
+        public IActionResult Post(List<ProdutoItem> pedidosItens)
+        {
+            try
+            {
+                //Adiciona um novo pedido com os itens do pedido
+                Pedido pedido = _repo.Adicionar(pedidosItens);
+
+                //Caso ok retorna o pedido
+                return Ok(pedido);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+      
     }
 }

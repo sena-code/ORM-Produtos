@@ -17,7 +17,6 @@ namespace Senai_Aula6.Interfaces
         /// <summary>
         /// Adiciona um novo pedido
         /// </summary>
-        /// <param name="pedidosItens">Lista de pedidos itens</param>
         /// <returns>Objeto Pedido</returns>
         Pedido Adicionar(List<ProdutoItem> produtoItens);
     }

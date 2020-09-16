@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Senai_Aula6.Domains;
 using Senai_Aula6.Interfaces;
 using Senai_Aula6.Repositories;
+using Senai_Aula6.Utils;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Senai_Aula6.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoController : ControllerBase
@@ -59,11 +62,20 @@ namespace Senai_Aula6.Controllers
             }
         }
 
+        //FromForm - Recebe os dados do produto via form-Data
         [HttpPost]
-        public IActionResult Post(Produto produto)
+        public IActionResult Post([FromForm]Produto produto)
         {
             try
             {
+                //Verifico se foi enviado uma arquivo com a imagem
+                if(produto.Imagem != null)
+                {
+                    var urlImagem = Upload.Local(produto.Imagem);
+
+                    produto.UrlImagem = urlImagem;
+                    
+                }
                 _produtoRepository.Adicionar(produto);
 
                 return Ok(produto);
