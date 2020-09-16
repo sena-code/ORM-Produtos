@@ -21,7 +21,6 @@ namespace Senai_Aula6.Repositories
         /// <summary>
         /// Adiciona um novo pedido
         /// </summary>
-        /// <param name="pedidosItens">Lista de pedidos itens</param>
         /// <returns>Objeto Pedido</returns>
         public Pedido Adicionar(List<Domains.ProdutoItem> produtoItens)
         {
