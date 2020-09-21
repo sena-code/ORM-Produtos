@@ -54,7 +54,13 @@ namespace Senai_Aula6.Controllers
 
                 if (produto == null)
                     return NotFound();
-                return Ok(produto);
+
+                Moeda dolar = new Moeda();
+
+                return Ok( new{
+                    produto, Valordolar = produto.Preco / dolar.GetDolarValue()  
+
+                    });
             }
             catch (Exception ex)
             {
